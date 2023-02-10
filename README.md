@@ -1,4 +1,4 @@
-# BE INSPIRED - DRF API
+# BE INSPIRED - DR API
 
 ## Table of Contents
 
