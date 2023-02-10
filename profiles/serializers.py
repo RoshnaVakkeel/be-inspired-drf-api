@@ -6,7 +6,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     '''
     Serializer for Profile Model data
     '''
-    owner = serializers.ReadOnlyField(source='owner.username')
+    # fetches user's username
+    owner = serializers.ReadOnlyField(source='owner.username') 
 
     class Meta:
         '''
