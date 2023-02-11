@@ -27,7 +27,32 @@
 - [Credits and Resources](<#credits-and-resources>)
 	- [Code](<#code>)
 
+## Design
+### User Stories
+The API was designed using the back end to achieve the user stories mentioned in the front end of 'Be Inspired' project. The back-end focuses on its administration side and can be described as one user story:
 
+As an admin, I want to be able to create, edit and delete the users, posts, comments and likes, so that I can have full control the application using its CRUD features.
+
+### Database Schema
+The database was built using the Django Rest Framework. It makes use of Django models, serializers, and views. The Data Schema was designed as shown below:
+
+![Database Schema](docs/images/database_schema_be_inspired.png)
+
+#### User Model
+
+- The User model consists of information about the user and is a part of Django allauth library. 
+- Relationships of User entity with other entities
+	- One-to-one relation with the Profile entity owner field
+	- One-to-many ForeignKey relation with the Follower entity owner and followed fields
+	- One-to-many ForeignKey relation with the Post entity owner field
+	- One-to-many ForeignKey relation with the Recommendation entity owner field
+	- One-to-many ForeignKey relation with the Comment entity owner field
+	- One-to-many ForeignKey relation with the Like entity owner field
+
+#### Profile Model
+
+- The Profile entity contains the following keys: owner, name, age_group, brief_bio, created_on, updated_on and image
+- One-to-one relation between the owner field and the user entity id field
 
 ## Project Setup
 Django Rest Framework (DRF) was used to create this API. DRF project was set up and many necessary dependencies were installed following these steps:
