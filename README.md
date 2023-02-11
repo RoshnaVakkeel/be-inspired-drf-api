@@ -54,6 +54,24 @@ The database was built using the Django Rest Framework. It makes use of Django m
 - The Profile entity contains the following keys: owner, name, age_group, brief_bio, created_on, updated_on and image
 - One-to-one relation between the owner field and the user entity id field
 
+The Profile model serializer adds additional fields when a model instance that is returned by the API:
+- is_owner: Whether the user making the request is the owner
+
+Then generate a view to render in 'views.py' file and create and wire up 'urls.py' in the respective directory. Then in 'urls.py' of project directory, for Class-based views
+- Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+
+#### Post Model
+- The Post entity contains the fields: owner, title, category, description, created_on, updated_on and image
+- Relationships of Post entity with other entities
+	- One-to-many ForeignKey relation with the Comment entity owner field
+	- One-to-many ForeignKey relation with the Like entity owner field
+
+The Post model serializer adds additional fields for when a model instance that is returned by the API:
+- is_owner: Whether the user making the request is the owner
+- profile_id: The profile id of the user that created the post
+- profile_image: The profile image of the user that made the post
+
+
 ## Project Setup
 Django Rest Framework (DRF) was used to create this API. DRF project was set up and many necessary dependencies were installed following these steps:
 
@@ -109,4 +127,7 @@ git push
 ~~~
 
 - App Creation
-Once the database models are created in 'models.py' file, they must be registered in 'admin.py' file of the respective app directory. In 'settings.py' the app must be entered in templates section. Later the migrations must be made to the database.
+After creation of new App using `python3 manage.py startapp <app>`, it must be added to installed apps in settings.py.
+
+Once the database models are created in 'models.py' file, they must be registered in 'admin.py' file of the respective app directory. Later the migrations must be made to the database.
+
