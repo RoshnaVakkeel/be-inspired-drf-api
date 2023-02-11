@@ -107,3 +107,6 @@ git add .
 git commit -m "initial commit"
 git push
 ~~~
+
+- App Creation
+Once the database models are created in 'models.py' file, they must be registered in 'admin.py' file of the respective app directory. In 'settings.py' the app must be entered in templates section. Later the migrations must be made to the database.
