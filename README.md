@@ -57,6 +57,14 @@ The database was built using the Django Rest Framework. It makes use of Django m
 The Profile model serializer adds additional fields when a model instance that is returned by the API:
 - is_owner: Whether the user making the request is the owner
 
+Django generics API views were used for Profile model:
+
+- ListAPIView enables:
+	- Users to retrieve a list of Profiles
+- RetrieveUpdateAPIView enables:
+	- Users to obtain a single Profile instance
+	- Users to update a single Profile instance (if they own it)
+
 Then generate a view to render in 'views.py' file and create and wire up 'urls.py' in the respective directory. Then in 'urls.py' of project directory, for Class-based views
 - Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 
