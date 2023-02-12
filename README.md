@@ -103,6 +103,34 @@ Django generics API views were used for Recommedation model:
 	- Users to obtain a single Recommedation instance
 	- Users to update a single Recommedation instance (if they own it)
 
+
+### Comments
+
+- The Comment entity contains the fields: owner, content, post, recommendation, created_on, updated_on
+- Relationships of Comment entity with other entities
+	- ForeignKey relation with the Post entity owner field
+	- ForeignKey relation with the Recommendation entity owner field
+
+The Comment model serializer adds additional fields for when a model instance that is returned by the API:
+- is_owner: Whether the user making the request is the owner
+- profile_id: The profile id of the user that created the Comment
+- profile_image: The profile image of the user that made the Comment
+
+Django generics API views were used for Comment model:
+- ListAPIView enables:
+	- Users to retrieve a list of Comments
+- RetrieveUpdateAPIView enables:
+	- Users to obtain a single Comment instance
+	- Users to update a single Comment instance (if they own it)
+
+Django Filters:
+
+Install filters: pip3 install django-filter
+In settings.py, in templates add: 'django-filters'
+pip3 freeze > requirements.txt
+
+
+
 ## Project Setup
 Django Rest Framework (DRF) was used to create this API. DRF project was set up and many necessary dependencies were installed following these steps:
 

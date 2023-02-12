@@ -17,13 +17,13 @@ class Comment(models.Model):
         Post,
         on_delete=models.CASCADE,
         default=None,
-        null=True
+        blank=True
         )
     recommendation = models.ForeignKey(
         Recommendation,
         on_delete=models.CASCADE,
         default=None,
-        null=True
+        blank=True
         )
 
     class Meta:
@@ -36,4 +36,4 @@ class Comment(models.Model):
         ''' 
         Returns the string representation of a model instance
         '''
-        return f'{self.id} {self.title}'
+        return self.content
