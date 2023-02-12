@@ -7,11 +7,12 @@
 	- [Database Schema](<#database-schema>)
         - [User](<#user>)
 	    - [Profile](<#profile>)
-        - [Followers](<#followers>)
 	    - [Post](<#post>)
         - [Recommendation](<#recommendation>)
+		- [Comment](<#comment>)
 	    - [Like](<#like>)
-	    - [Comment](<#comment>)
+		- [Followers](<#followers>)
+- [Isuues and Fixes](<#issues-and-fixes>)
 - [Testing](<#testing>)
 	- [Manual Testing](<#manual-testing>)
 	- [Validation](<#validation>)
@@ -129,6 +130,32 @@ Install filters: pip3 install django-filter
 In settings.py, in templates add: 'django-filters'
 pip3 freeze > requirements.txt
 
+## Issues and Fix
+
+- Issue 1:
+In Django Admin, Home › Comments › Comments › Add comment section, while saving a Comment error appears. It says that all the fields are cumpulsory. Comments Entity has foreign key relationship with Post and Recommedation entities. So, in the Comment model, both post and recommedation fields were defined. The argument for both was provided as null=True considering the empty value to be accepted.
+~~~
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        default=None,
+        null=True
+        )
+    recommendation = models.ForeignKey(
+        Recommendation,
+        on_delete=models.CASCADE,
+        default=None,
+        null=True
+        )
+~~~
+
+But Django admin would only save the comment if both fields were selected.
+
+Fix:
+
+The argument was changed from null=True to blank=True and the issue was solved. It was a validation error. In the field options, null is purely database-related, whereas blank is validation-related.
+Reference: https://docs.djangoproject.com/en/4.1/topics/db/models/
+
 
 
 ## Project Setup
@@ -189,4 +216,6 @@ git push
 After creation of new App using `python3 manage.py startapp <app>`, it must be added to installed apps in settings.py.
 
 Once the database models are created in 'models.py' file, they must be registered in 'admin.py' file of the respective app directory. Later the migrations must be made to the database.
+
+
 
