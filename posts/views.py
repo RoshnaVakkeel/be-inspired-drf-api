@@ -21,6 +21,7 @@ class PostList(generics.ListAPIView):
         Asociates the post with the user creating post
         '''
         serializer.save(owner=self.request.user)
+        
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     '''

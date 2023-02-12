@@ -20,6 +20,7 @@ class CommentList(generics.ListAPIView):
         DjangoFilterBackend,
     ]
     filterset_fields = [
+        'owner',
         'post',
         'recommendation',
     ]
