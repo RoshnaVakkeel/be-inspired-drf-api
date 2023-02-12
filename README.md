@@ -58,12 +58,11 @@ The Profile model serializer adds additional fields when a model instance that i
 - is_owner: Whether the user making the request is the owner
 
 Django generics API views were used for Profile model:
-
 - ListAPIView enables:
 	- Users to retrieve a list of Profiles
 - RetrieveUpdateAPIView enables:
 	- Users to obtain a single Profile instance
-	- Users to update a single Profile instance (if they own it)
+	- Users to update a single Profile instance (if it is theirs)
 
 Then generate a view to render in 'views.py' file and create and wire up 'urls.py' in the respective directory. Then in 'urls.py' of project directory, for Class-based views
 - Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
@@ -79,6 +78,30 @@ The Post model serializer adds additional fields for when a model instance that 
 - profile_id: The profile id of the user that created the post
 - profile_image: The profile image of the user that made the post
 
+Django generics API views were used for Post model:
+- ListAPIView enables:
+	- Users to retrieve a list of posts
+- RetrieveUpdateAPIView enables:
+	- Users to obtain a single Post instance
+	- Users to update a single Post instance (if they own it)
+
+#### Recommedation Model
+- The Recommedation entity contains the fields: owner, title, category, description, created_on, updated_on and image
+- Relationships of Recommedation entity with other entities
+	- One-to-many ForeignKey relation with the Comment entity owner field
+	- One-to-many ForeignKey relation with the Like entity owner field
+
+The Recommedation model serializer adds additional fields for when a model instance that is returned by the API:
+- is_owner: Whether the user making the request is the owner
+- profile_id: The profile id of the user that created the Recommedation
+- profile_image: The profile image of the user that made the Recommedation
+
+Django generics API views were used for Recommedation model:
+- ListAPIView enables:
+	- Users to retrieve a list of recommedations
+- RetrieveUpdateAPIView enables:
+	- Users to obtain a single Recommedation instance
+	- Users to update a single Recommedation instance (if they own it)
 
 ## Project Setup
 Django Rest Framework (DRF) was used to create this API. DRF project was set up and many necessary dependencies were installed following these steps:

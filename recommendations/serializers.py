@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Post
+from .models import Recommendation
 
 
-class PostSerializer(serializers.ModelSerializer):
+class RecommendationSerializer(serializers.ModelSerializer):
     '''
-    Class for PostSerializer for Post model
+    Class for RecommendationSerializer for Recommendation model
     '''
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -29,9 +29,9 @@ class PostSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     class Meta:
-        model = Post
+        model = Recommendation()
         fields = [
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_on', 'updated_on',
-            'title', 'category', 'description', 'image', 
+            'title', 'category', 'price_category', 'description', 'reason', 'image',
         ]
