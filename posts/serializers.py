@@ -11,6 +11,8 @@ class PostSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    comments_count = serializers.ReadOnlyField()
+    likes_count = serializers.ReadOnlyField()
     like_id = serializers.SerializerMethodField()
 
     def validate_image(self, value):
@@ -31,7 +33,7 @@ class PostSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     def get_like_id(self, obj):
-        # checks if the logged in user  is like any other profiles
+        # checks if the logged in user has liked any posts
         user = self.context['request'].user
         if user.is_authenticated:
             like = Like.objects.filter(
@@ -46,5 +48,5 @@ class PostSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_on', 'updated_on',
             'title', 'category', 'description', 'image',
-            'like_id',
+            'comments_count', 'likes_count', 'like_id',
         ]
