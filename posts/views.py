@@ -22,6 +22,7 @@ class PostList(generics.ListAPIView):
     ).order_by('-created_on')
     filter_backends = [
         filters.OrderingFilter,
+        filters.SearchFilter,
         DjangoFilterBackend,
     ]
     filterset_fields = [
@@ -34,6 +35,11 @@ class PostList(generics.ListAPIView):
         'likes_count',
         'likes__created_on',
     ]
+    search_fields = [
+        'title',
+        'category',
+        'description',
+    ]
 
     def perform_create(self, serializer):
         '''
@@ -44,7 +50,7 @@ class PostList(generics.ListAPIView):
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     '''
-    Displays details of selected post
+    Displays details of selected post 
     Allows the owner to edit or delete it
     '''
     permission_classes = [IsOwnerOrReadOnly]

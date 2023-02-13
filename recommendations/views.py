@@ -22,6 +22,7 @@ class RecommendationList(generics.ListAPIView):
     ).order_by('-created_on')
     filter_backends = [
         filters.OrderingFilter,
+        filters.SearchFilter,
         DjangoFilterBackend,
     ]
     filterset_fields = [
@@ -33,6 +34,13 @@ class RecommendationList(generics.ListAPIView):
         'comments_count',
         'likes_count',
         'likes__created_on',
+    ]
+    search_fields = [
+        'title',
+        'category',
+        'price_category',
+        'description',
+        'reason',
     ]
 
     def perform_create(self, serializer):

@@ -21,7 +21,8 @@ class ProfileList(generics.ListAPIView):
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        filters.SearchFilter,
     ]
     ordering_fields = [
         'posts_count',
@@ -31,7 +32,11 @@ class ProfileList(generics.ListAPIView):
         'owner__following__created_on',
         'owner__followed__created_on',
     ]
-
+    search_fields = [
+        'owner__username',
+        'name',
+        'age_group',
+    ]
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     '''
