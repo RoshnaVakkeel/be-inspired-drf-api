@@ -10,6 +10,7 @@ class RecommendationSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    like_id = serializers.SerializerMethodField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -28,10 +29,24 @@ class RecommendationSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
+    def get_like_id(self, obj):
+        '''
+        Checks if the logged in user has liked any recommendations.
+        like_id field is set to the corresponding Like instance
+        '''
+        user = self.context['request'].user
+        if user.is_authenticated:
+            like = Like.objects.filter(
+                owner=user, recommendation=obj
+            ).first()
+            return like.id if like else None
+        return None
+
     class Meta:
         model = Recommendation()
         fields = [
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_on', 'updated_on',
-            'title', 'category', 'price_category', 'description', 'reason', 'image',
+            'title', 'category', 'price_category', 'description',
+            'reason', 'image', 'like_id',
         ]
