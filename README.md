@@ -161,6 +161,9 @@ Issue 2:
 My Like model has foreign key relationship with both Post and Recommendation entities. I can only add a like if I select both Post and Recommendation, but I wanted them to be independent. So, I added blank=True in field class types. But then I could not migrate the changes to database. Like issue 1, I added field class type as blank=True and skipped null=True. But in the terminal then new error appeared upon running 'python3 manage.py migrate' command. Error at terminal: 
 django.db.utils.IntegrityError: NOT NULL constraint failed: new__comments_comment.post_id
 
+Fix: ???
+
+
 
 ## Project Setup
 Django Rest Framework (DRF) was used to create this API. DRF project was set up and many necessary dependencies were installed following these steps:
