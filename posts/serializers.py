@@ -34,6 +34,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_like_id(self, obj):
         # checks if the logged in user has liked any posts
+        # like_id field is set to the corresponding Like instance
         user = self.context['request'].user
         if user.is_authenticated:
             like = Like.objects.filter(

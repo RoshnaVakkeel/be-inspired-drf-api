@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Recommendation
+from likes.models import Like
 
 
 class RecommendationSerializer(serializers.ModelSerializer):
@@ -10,6 +11,8 @@ class RecommendationSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    comments_count = serializers.ReadOnlyField()
+    likes_count = serializers.ReadOnlyField() 
     like_id = serializers.SerializerMethodField()
 
     def validate_image(self, value):
@@ -48,5 +51,5 @@ class RecommendationSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_on', 'updated_on',
             'title', 'category', 'price_category', 'description',
-            'reason', 'image', 'like_id',
+            'reason', 'image', 'comments_count', 'likes_count', 'like_id',
         ]

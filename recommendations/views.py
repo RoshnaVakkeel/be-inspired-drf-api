@@ -1,4 +1,6 @@
-from rest_framework import generics, permissions
+from django.db.models import Count
+from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Recommendation
@@ -14,7 +16,24 @@ class RecommendationList(generics.ListAPIView):
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
     ]
-    queryset = Recommendation.objects.all()
+    queryset = Recommendation.objects.annotate(
+        comments_count=Count('comment', distinct=True),
+        likes_count=Count('likes', distinct=True),
+    ).order_by('-created_on')
+    filter_backends = [
+        filters.OrderingFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'owner__followed__owner__profile',
+        'likes__owner__profile',
+        'owner__profile',
+    ]
+    ordering_fields = [
+        'comments_count',
+        'likes_count',
+        'likes__created_on',
+    ]
 
     def perform_create(self, serializer):
         '''
@@ -24,8 +43,12 @@ class RecommendationList(generics.ListAPIView):
 
 class RecommendationDetail(generics.RetrieveUpdateDestroyAPIView):
     '''
-    Displays details of selected Recommendation and allows the owner to edit or delete it
+    Displays details of selected Recommendation 
+    Allows the owner to edit or delete it
     '''
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = RecommendationSerializer
-    queryset = Recommendation.objects.all()
+    queryset = Recommendation.objects.annotate(
+        comments_count=Count('comment', distinct=True),
+        likes_count=Count('likes', distinct=True),
+    ).order_by('-created_on')
