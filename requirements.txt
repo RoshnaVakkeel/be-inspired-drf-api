@@ -1,6 +1,7 @@
 asgiref==3.6.0
+backports.zoneinfo==0.2.1
 cloudinary==1.32.0
-Django==3.2.17
+Django==4.1.6
 django-cloudinary-storage==0.3.0
 django-filter==22.1
 djangorestframework==3.14.0

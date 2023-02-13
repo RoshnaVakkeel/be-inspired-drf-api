@@ -17,12 +17,14 @@ class Comment(models.Model):
         Post,
         on_delete=models.CASCADE,
         default=None,
+        null=True,
         blank=True
         )
     recommendation = models.ForeignKey(
         Recommendation,
         on_delete=models.CASCADE,
         default=None,
+        null=True,
         blank=True
         )
 

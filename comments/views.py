@@ -37,5 +37,5 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     Displays details of selected Comment and allows the owner to edit or delete it
     '''
     permission_classes = [IsOwnerOrReadOnly]
-    serializer_class = CommentSerializer
+    serializer_class = CommentDetailSerializer
     queryset = Comment.objects.all()

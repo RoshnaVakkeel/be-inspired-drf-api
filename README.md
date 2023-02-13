@@ -149,13 +149,17 @@ In Django Admin, Home › Comments › Comments › Add comment section, while s
         )
 ~~~
 
-But Django admin would only save the comment if both fields were selected.
+But Django admin would only save the comment if both fields were selected. I wanted them to be independent i.e. 
 
 Fix:
 
-The argument was changed from null=True to blank=True and the issue was solved. It was a validation error. In the field options, null is purely database-related, whereas blank is validation-related.
+The field class type was changed from null=True to blank=True and the issue was solved. It was a validation error. In the field options, null is purely database-related, whereas blank is validation-related.
 Reference: https://docs.djangoproject.com/en/4.1/topics/db/models/
 
+
+Issue 2:
+My Like model has foreign key relationship with both Post and Recommendation entities. I can only add a like if I select both Post and Recommendation, but I wanted them to be independent. So, I added blank=True in field class types. But then I could not migrate the changes to database. Like issue 1, I added field class type as blank=True and skipped null=True. But in the terminal then new error appeared upon running 'python3 manage.py migrate' command. Error at terminal: 
+django.db.utils.IntegrityError: NOT NULL constraint failed: new__comments_comment.post_id
 
 
 ## Project Setup

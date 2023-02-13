@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from posts.models import Post
 from recommendations.models import Recommendation
 
-
 class Like(models.Model):
     '''
     Like model
@@ -11,12 +10,12 @@ class Like(models.Model):
     '''
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
     post = models.ForeignKey(
         Post,
         on_delete=models.CASCADE,
         related_name='likes',
         default=None,
+        null=True,
         blank=True
         )
     recommendation = models.ForeignKey(
@@ -24,6 +23,7 @@ class Like(models.Model):
         on_delete=models.CASCADE,
         related_name='likes',
         default=None,
+        null=True,
         blank=True
         )
 
@@ -36,7 +36,7 @@ class Like(models.Model):
         unique_together = ['owner', 'post'], ['owner', 'recommendation']
 
     def __str__(self):
-        ''' 
+        '''
         Returns the string representation of a model instance
         '''
-        return f'${self.owner} ${self.post} ${self.recommendation}'
+        return f'{self.owner} {self.post} {self.recommendation}'
