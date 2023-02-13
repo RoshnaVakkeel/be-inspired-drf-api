@@ -13,11 +13,11 @@ class Profile(models.Model):
         A class for the age_group key
         Contains different age ranges to choose from
         """
-        TEENAGER = '10 - 18',
-        YOUNGADULT = '19 - 25',
-        ADULT = '26 - 40',
-        MIDDLEAGED = '41 - 60',
-        SENIOR = '>61',
+        TEENAGER = 'Teenager (10 - 18)',
+        YOUNGADULT = 'Young Adult (19 - 25)',
+        ADULT = 'Adult (26 - 40)',
+        MIDDLEAGED = 'Middle Aged (41 - 60)',
+        SENIOR = 'Senior (>61)',
 
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, blank=True)
