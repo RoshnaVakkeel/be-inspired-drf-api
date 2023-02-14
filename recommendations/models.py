@@ -24,10 +24,10 @@ class Recommendation(models.Model):
         Price categories for the user to choose
         """
         FREE = 'Free',
-        CHEAP = '€',
-        AVERAGE = '€€',
-        ABOVEAVERAGE = '€€€',
-        EXPENSIVE = '€€€€',
+        CHEAP = 'Cheap (€)',
+        AVERAGE = 'Average (€€)',
+        ABOVEAVERAGE = 'Above Average (€€€)',
+        EXPENSIVE = 'Expensive (€€€€)',
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -42,7 +42,7 @@ class Recommendation(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     description = models.TextField(blank=True)
-    reason = models.TextField(blank=True)   
+    reason = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/',
         default='../default_post_l2kfwu',
@@ -56,7 +56,7 @@ class Recommendation(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        ''' 
+        '''
         Returns the string representation of a model instance
         '''
         return f'{self.id} {self.title}'

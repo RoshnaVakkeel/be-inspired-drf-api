@@ -34,7 +34,8 @@ class CommentList(generics.ListAPIView):
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     '''
-    Displays details of selected Comment and allows the owner to edit or delete it
+    Displays details of selected Comment
+    Allows the owner to edit/delete it
     '''
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = CommentDetailSerializer

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Post(models.Model):
     '''
     Post model
@@ -40,7 +41,7 @@ class Post(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        ''' 
+        '''
         Returns the string representation of a model instance
         '''
         return f'{self.id} {self.title}'

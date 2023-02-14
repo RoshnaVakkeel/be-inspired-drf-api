@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from posts.models import Post
 from recommendations.models import Recommendation
 
+
 class Like(models.Model):
     '''
     Like model

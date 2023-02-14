@@ -12,7 +12,7 @@ class RecommendationSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     comments_count = serializers.ReadOnlyField()
-    likes_count = serializers.ReadOnlyField() 
+    likes_count = serializers.ReadOnlyField()
     like_id = serializers.SerializerMethodField()
 
     def validate_image(self, value):

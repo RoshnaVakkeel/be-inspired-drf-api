@@ -46,11 +46,11 @@ class PostList(generics.ListAPIView):
         Asociates the post with the user creating post
         '''
         serializer.save(owner=self.request.user)
-        
+
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     '''
-    Displays details of selected post 
+    Displays details of selected post
     Allows the owner to edit or delete it
     '''
     permission_classes = [IsOwnerOrReadOnly]

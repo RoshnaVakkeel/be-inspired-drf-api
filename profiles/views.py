@@ -38,6 +38,7 @@ class ProfileList(generics.ListAPIView):
         'age_group',
     ]
 
+
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     '''
     Displays details of selected profile and allows the owner to edit it

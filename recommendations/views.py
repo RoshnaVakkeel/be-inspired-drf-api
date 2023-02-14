@@ -49,9 +49,10 @@ class RecommendationList(generics.ListAPIView):
         '''
         serializer.save(owner=self.request.user)
 
+
 class RecommendationDetail(generics.RetrieveUpdateDestroyAPIView):
     '''
-    Displays details of selected Recommendation 
+    Displays details of selected Recommendation
     Allows the owner to edit or delete it
     '''
     permission_classes = [IsOwnerOrReadOnly]

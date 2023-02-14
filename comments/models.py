@@ -35,7 +35,7 @@ class Comment(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        ''' 
+        '''
         Returns the string representation of a model instance
         '''
         return self.content
