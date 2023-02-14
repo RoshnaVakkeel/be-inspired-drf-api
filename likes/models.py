@@ -17,7 +17,6 @@ class Like(models.Model):
         related_name='likes',
         default=None,
         null=True,
-        blank=True
         )
     recommendation = models.ForeignKey(
         Recommendation,
@@ -25,7 +24,6 @@ class Like(models.Model):
         related_name='likes',
         default=None,
         null=True,
-        blank=True
         )
 
     class Meta:
@@ -34,7 +32,6 @@ class Like(models.Model):
         'unique_together' for single selection of post/recommendation
         '''
         ordering = ['-created_on']
-        unique_together = ['owner', 'post'], ['owner', 'recommendation']
 
     def __str__(self):
         '''

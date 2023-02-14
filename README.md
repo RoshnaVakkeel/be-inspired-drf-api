@@ -133,7 +133,7 @@ pip3 freeze > requirements.txt
 ## Issues and Fix
 
 - Issue 1:
-In Django Admin, Home › Comments › Comments › Add comment section, while saving a Comment error appears. It says that all the fields are cumpulsory. Comments Entity has foreign key relationship with Post and Recommedation entities. So, in the Comment model, both post and recommedation fields were defined. The argument for both was provided as null=True considering the empty value to be accepted.
+In Django Admin, Home › Comments › Comments › Add comment section, while saving a Comment error appears. It says that all the fields are cumpulsory. Comments Entity has foreign key relationship with Post and Recommedation entities. So, in the Comment model, both post and recommedation fields were defined. The field class type for both was provided as null=True considering the empty value to be accepted.
 ~~~
     post = models.ForeignKey(
         Post,
@@ -157,11 +157,14 @@ The field class type was changed from null=True to blank=True and the issue was 
 Reference: https://docs.djangoproject.com/en/4.1/topics/db/models/
 
 
-Issue 2:
+- Issue 2: Multiple migration error into database
 My Like model has foreign key relationship with both Post and Recommendation entities. I can only add a like if I select both Post and Recommendation, but I wanted them to be independent. So, I added blank=True in field class types. But then I could not migrate the changes to database. Like issue 1, I added field class type as blank=True and skipped null=True. But in the terminal then new error appeared upon running 'python3 manage.py migrate' command. Error at terminal: 
 django.db.utils.IntegrityError: NOT NULL constraint failed: new__comments_comment.post_id
 
-Fix: ???
+Fix: 
+With the help of Tutor support (special thanks to Ed, CI), as suggested, I deleted the latest migration instances and manually and migrated freshly and the issue solved. 
+
+- Issue 3: Integrity Error
 
 
 
