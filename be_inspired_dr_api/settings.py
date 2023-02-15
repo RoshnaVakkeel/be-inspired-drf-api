@@ -33,7 +33,7 @@ REST_FRAMEWORK = {
         if 'DEV' in os.environ
         else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
     )],
-        'DEFAULT_PAGINATION_CLASS':
+    'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
     'DATETIME_FORMAT': '%d %B %Y %H:%M(CET)',
@@ -144,16 +144,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # NOQA
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',  # NOQA
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # NOQA
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # NOQA
     },
 ]
 
@@ -183,4 +183,4 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CSRF_TRUSTED_ORIGINS = ['localhost',]
-CSRF_TRUSTED_ORIGINS = ['https://8000-roshnavakke-beinspiredd-wcpa9838shu.ws-eu86.gitpod.io', ]
+CSRF_TRUSTED_ORIGINS = ['https://8000-roshnavakke-beinspiredd-wcpa9838shu.ws-eu86.gitpod.io', ]  # NOQA

@@ -9,10 +9,11 @@ from .settings import (
 @api_view()
 def root_route(request):
     return Response({
-        'message': 'Welcome to the Be Inspired - DRF API!'})
+        'message': 'Hello, Welcome to the Be Inspired - DRF API!'})
 
 
 # dj-rest-auth logout view fix
+# Codes from CI's 'Moments' Walkthrough project
 @api_view(['POST'])
 def logout_route(request):
     response = Response()
