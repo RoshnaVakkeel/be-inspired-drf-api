@@ -269,6 +269,8 @@ git commit -m "initial commit"
 git push
 ~~~
 
+[Credit for the write-up- Adam Hatton's quizle-drf-api](https://github.com/adamhatton/quizle-drf-api)
+
 - App Creation
 After creation of new App using `python3 manage.py startapp <app>`, it must be added to installed apps in settings.py.
 
@@ -316,7 +318,31 @@ Then update dependencies using `pip3 freeze > requirements.txt`
 Additionally generate a view to render in 'views.py' file and create and wire up 'urls.py' in the respective directory. Then in 'urls.py' of project directory, for Class-based views
 - Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 
-### JWT Tokens
+### JWT Tokens 
+
+To configure and enable JWT Tokens, the following steps were folowed:
+
+1. Install the dj-rest-auth package for JWT tokens using `pip3 install djangorestframework-simplejwt`
+2. Create a session authentication value for differentiating between Development and Production environments, this should be added to the env.py file: `os.environ['DEV'] = '1'`
+3. Use the session authentication value in settings.py to determine whether to use SessionAuthentication (for in Dev) or JWT Tokens (for in Production) using the following:
+~~~
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [( 
+        'rest_framework.authentication.SessionAuthentication' 
+        if 'DEV' in os.environ 
+        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    )]
+}
+~~~
+4. Add `REST_USE_JWT = True` to enable token authentication
+5. Add `JWT_AUTH_SECURE = True` to ensure tokens are only sent over HTTPS
+6. Give cookie names to the access and refresh tokens using:
+~~~
+JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+~~~
+
+[Credit for the write-up- Adam Hatton's quizle-drf-api](https://github.com/adamhatton/quizle-drf-api)
 
 ## Deployment
 
@@ -368,10 +394,22 @@ django.db.utils.IntegrityError: NOT NULL constraint failed: likes_like.post_id
 Then I removed blank=True field class types for both posts and recommendations fields. The issue now is that when both options are not selected in Home › Likes › Likes › Add like in Django admin page, validation error is raised that both the fields are required. 
 [Screenshots of the error 3](docs/issues/issue_3_integrity_error.pdf)
 
+- Fix: Needs to be fixed
+
 ## Testing
 
 ## Credits and Resources
+- Django REST Framework Documentation
+- The codes were highly and heavily rely on CI's DRF-API walkthrough.
+- Code Institute's Tutor support - Ed and Gemma
+- DRF installation, project set up and deployment sections were copied from [Adam Hatton's quizle-drf-api](https://github.com/adamhatton/quizle-drf-api) and were edited as I performed in my project. 
+- Other references for the project and learning resources were:
+- [SnapFood API in DRF](https://github.com/aleksandracodes/snapfood-drf-api)
+- [Buzz of Berlin DRF API](https://github.com/vkleer/Buzz_of_Berlin_DRF_API)
+- [ci-pp5-gamer-verse-drf-api](https://github.com/Jbachtiger/ci-pp5-gamer-verse-drf-api)
+- Stack Overflow
 
-### Code
+
+
 
 
