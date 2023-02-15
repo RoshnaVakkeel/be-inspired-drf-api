@@ -41,7 +41,8 @@ class ProfileList(generics.ListAPIView):
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     '''
-    Displays details of selected profile and allows the owner to edit it
+    Displays details of selected profile
+    Allows the owner to edit it
     '''
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]

@@ -32,6 +32,7 @@ class Like(models.Model):
         'unique_together' for single selection of post/recommendation
         '''
         ordering = ['-created_on']
+        unique_together = ['owner', 'post'], ['owner', 'recommendation']
 
     def __str__(self):
         '''
