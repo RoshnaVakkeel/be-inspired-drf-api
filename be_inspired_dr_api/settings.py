@@ -183,4 +183,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CSRF_TRUSTED_ORIGINS = ['localhost',]
-CSRF_TRUSTED_ORIGINS = ['https://8000-roshnavakke-beinspiredd-wcpa9838shu.ws-eu86.gitpod.io', ]  # NOQA
+# Solution for 403 forbidden response on logging in to admin account
+CSRF_TRUSTED_ORIGINS = ['https://8000-roshnavakke-beinspiredd-wcpa9838shu.ws-eu87.gitpod.io', 'https://*.example.com',]  # NOQA
