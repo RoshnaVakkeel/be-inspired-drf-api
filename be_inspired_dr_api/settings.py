@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import os
+import dj_database_url
 
 if os.path.exists('env.py'):
     import env
@@ -60,10 +62,9 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['localhost']
-
+ALLOWED_HOSTS = ['localhost', 'be-inspired-drf-api.herokuapp.com']
 
 # Application definition
 
@@ -85,7 +86,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth.registration',
-
+    'dj_rest_auth.registration',
+    'corsheaders',
 
     'profiles',
     'posts',
@@ -105,7 +107,22 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(
+        r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE
+    ).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
+else:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.gitpod\.io$",
+    ]
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'be_inspired_dr_api.urls'
 
@@ -135,9 +152,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    } if 'DEV' in os.environ else dj_database_url.parse(
+        os.environ.get('DATABASE_URL')
+    )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
