@@ -107,10 +107,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ALLOWED_HOSTS = [
-    os.environ.get('ALLOWED_HOSTS'),
-    'localhost',
-]
+ALLOWED_HOSTS = []
 
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
