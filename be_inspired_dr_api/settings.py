@@ -108,7 +108,7 @@ MIDDLEWARE = [
 ]
 
 ALLOWED_HOSTS = [
-    os.environ.get('ALLOWED_HOST'),
+    os.environ.get('ALLOWED_HOSTS'),
     'localhost',
 ]
 
