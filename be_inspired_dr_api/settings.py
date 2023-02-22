@@ -107,7 +107,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['be-inspired-drf-api.herokuapp.com', 'localhost']
 
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
