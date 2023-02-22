@@ -110,7 +110,6 @@ MIDDLEWARE = [
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'localhost',
-    'https://be-inspired-drf-api.herokuapp.com/',
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
