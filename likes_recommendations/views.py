@@ -6,7 +6,7 @@ from likes_recommendations.serializers import LikeRecommendationSerializer
 
 class LikeRecommendationList(generics.ListCreateAPIView):
     '''
-    A class for the LikeList generic API view
+    A class for the LikeRecommendationList generic API view
     '''
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = LikeRecommendationSerializer
@@ -18,7 +18,7 @@ class LikeRecommendationList(generics.ListCreateAPIView):
 
 class LikeRecommendationDetail(generics.RetrieveDestroyAPIView):
     '''
-    Class for the LikeDetail generic API view
+    Class for the LikeRecommendationDetail generic API view
     Enables single like to be retrieved and deleted
     '''
     permission_classes = [IsOwnerOrReadOnly]

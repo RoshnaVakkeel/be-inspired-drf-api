@@ -22,7 +22,7 @@ class LikeRecommendation(models.Model):
     class Meta:
         '''
         Orders Like objects in the order latest to old
-        'unique_together' for single selection of post/recommendation
+        'unique_together' for single selection of recommendation
         '''
         ordering = ['-created_on']
         unique_together = ['owner', 'recommendation']
@@ -32,4 +32,3 @@ class LikeRecommendation(models.Model):
         Returns the string representation of a model instance
         '''
         return f'{self.owner} {self.recommendation}'
-
