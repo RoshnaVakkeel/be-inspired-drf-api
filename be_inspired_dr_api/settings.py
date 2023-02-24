@@ -91,6 +91,7 @@ INSTALLED_APPS = [
     'recommendations',
     'comments',
     'likes',
+    'likes_recommendations',
     'followers',
 ]
 
