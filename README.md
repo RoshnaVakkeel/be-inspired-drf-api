@@ -221,7 +221,7 @@ Django generics API views were used for Follower model:
 ### Project Setup
 Django Rest Framework (DRF) was used to create this API. DRF project was set up and many necessary dependencies were installed following these steps:
 
-1. Within your development environment/terminal, install Django with: `pip3 install django>4` to install Django framework.
+1. Within your development environment/terminal, install Django with: `pip3 install 'django<4'` to install Django framework.
 2. The code at terminal `pip3 install <package>` was used to install different dependencies:
 - `pip3 install django-cloudinary-storage`- for Cloudinary to store uploaded image files
 - `pip3 install Pillow` - To allow ImageFields to be used in the database models
