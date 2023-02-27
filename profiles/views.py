@@ -7,7 +7,7 @@ from .serializers import ProfileSerializer
 from be_inspired_dr_api.permissions import IsOwnerOrReadOnly
 
 
-class ProfileList(generics.ListAPIView):
+class ProfileList(generics.ListCreateAPIView):
     '''
     Lists all the created profiles
     '''
