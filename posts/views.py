@@ -8,9 +8,10 @@ from .serializers import PostSerializer
 from be_inspired_dr_api.permissions import IsOwnerOrReadOnly
 
 
-class PostList(generics.ListAPIView):
+class PostList(generics.ListCreateAPIView):
     '''
     Lists all the created posts
+    The perform_create method associates the post with the logged in user.
     '''
     serializer_class = PostSerializer
     permission_classes = [
