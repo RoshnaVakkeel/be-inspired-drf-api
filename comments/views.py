@@ -7,7 +7,7 @@ from .serializers import CommentSerializer, CommentDetailSerializer
 from be_inspired_dr_api.permissions import IsOwnerOrReadOnly
 
 
-class CommentList(generics.ListAPIView):
+class CommentList(generics.ListCreateAPIView):
     '''
     Lists all the created Comments
     '''
