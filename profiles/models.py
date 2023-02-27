@@ -14,9 +14,9 @@ class Profile(models.Model):
         Contains different age ranges to choose from
         """
         TEENAGER = 'Teenager (10 - 18)',
-        YOUNGADULT = 'Young Adult (19 - 25)',
+        YOUNG_ADULT = 'Young Adult (19 - 25)',
         ADULT = 'Adult (26 - 40)',
-        MIDDLEAGED = 'Middle Aged (41 - 60)',
+        MIDDLE_AGED = 'Middle Aged (41 - 60)',
         SENIOR = 'Senior (>61)',
 
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -30,7 +30,7 @@ class Profile(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     # Default profile image
     image = models.ImageField(
-        upload_to='images/', default='../user_pixabay_mcfz1f'
+        upload_to='images/', default='../default_profile_rzzofg'
     )
 
     class Meta:
