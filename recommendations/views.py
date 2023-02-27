@@ -8,7 +8,7 @@ from .serializers import RecommendationSerializer
 from be_inspired_dr_api.permissions import IsOwnerOrReadOnly
 
 
-class RecommendationList(generics.ListAPIView):
+class RecommendationList(generics.ListCreateAPIView):
     '''
     Lists all the created Recommendations
     '''
