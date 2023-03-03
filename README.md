@@ -400,6 +400,12 @@ Then I removed blank=True field class types for both posts and recommendations f
 
 - Fix: To solve it, I created a separate app for Recommedation Likes called likes_recommendations and then I could select it without any clash. Similarly, I could also extend it to Posts. But with fronend I see that there is no issue. User can like a post without a need to select a Recommendation. 
 
+- Issue 3: Category Selection
+In the frontend, I added badges to enable search of posts using badges. Upon usin setCategory function, the selected badge with category must return response. 
+
+-Fix: I added category in fiterset_fields = [categrory,] to solve this.
+
+
 ## Testing
 
 ## Credits and Resources
