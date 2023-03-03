@@ -70,7 +70,8 @@ The Profile model serializer adds additional fields when a model instance that i
 
 ##### Profile Views
 Django generics API views were used for Profile model:
-- ListAPIView enables:
+- ListAPICreateView enables:
+	- Users to create their Profile
 	- Users to retrieve a list of Profiles
 - RetrieveUpdateAPIView enables:
 	- Users to obtain a single Profile instance
@@ -95,8 +96,9 @@ The Post model serializer adds additional fields for when a model instance that 
 
 ##### Post Views
 Django generics API views were used for Post model:
-- ListAPIView enables:
-	- Users to retrieve a list of posts
+- ListAPICreateView enables:
+	- Users to create Posts
+	- Users to retrieve a list of Posts
 - RetrieveUpdateDestroyAPIView enables:
 	- Users to obtain a single Post instance
 	- Users to update a single Post instance (if they own it)
@@ -120,7 +122,8 @@ The Recommendation model serializer adds additional fields for when a model inst
 
 ##### Recommendation Views
 Django generics API views were used for Recommendation model:
-- ListAPIView enables:
+- ListAPICreateView enables:
+	- Users to create Recommendations
 	- Users to retrieve a list of Recommendations
 - RetrieveUpdateDestroyAPIView enables:
 	- Users to obtain a single Recommendation instance
@@ -144,7 +147,8 @@ The Comment model serializer adds additional fields for when a model instance th
 
 ##### Comment Views
 Django generics API views were used for Comment model:
-- ListAPIView enables:
+- ListAPICreateView enables:
+	- Users to create Comments
 	- Users to retrieve a list of Comments
 - RetrieveUpdateDestroyAPIView enables:
 	- Users to obtain a single Comment instance
@@ -394,7 +398,7 @@ django.db.utils.IntegrityError: NOT NULL constraint failed: likes_like.post_id
 Then I removed blank=True field class types for both posts and recommendations fields. The issue now is that when both options are not selected in Home › Likes › Likes › Add like in Django admin page, validation error is raised that both the fields are required. 
 [Screenshots of the error 3](docs/issues/issue_3_integrity_error.pdf)
 
-- Fix: Needs to be fixed
+- Fix: To solve it, I created a separate app for Recommedation Likes called likes_recommendations and then I could select it without any clash. Similarly, I could also extend it to Posts. But with fronend I see that there is no issue. User can like a post without a need to select a Recommendation. 
 
 ## Testing
 
