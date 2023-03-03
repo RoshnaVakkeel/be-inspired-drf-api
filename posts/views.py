@@ -27,9 +27,10 @@ class PostList(generics.ListCreateAPIView):
         DjangoFilterBackend,
     ]
     filterset_fields = [
-        'owner__followed__owner__profile',
-        'likes__owner__profile',
-        'owner__profile',
+        'owner__followed__owner__profile',  # return specific user's posts
+        'likes__owner__profile',  # return posts a specific user liked
+        'owner__profile',  # return posts owned by a specific user
+        'category',  # return which category the post belongs to
     ]
     ordering_fields = [
         'comments_count',

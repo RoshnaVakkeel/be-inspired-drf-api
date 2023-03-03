@@ -26,9 +26,10 @@ class RecommendationList(generics.ListCreateAPIView):
         DjangoFilterBackend,
     ]
     filterset_fields = [
-        'owner__followed__owner__profile',
-        'likes__owner__profile',
-        'owner__profile',
+        'owner__followed__owner__profile',  # return specific user's recommendations
+        'likes__owner__profile',  # return recommendations a specific user liked
+        'owner__profile',  # return recommendations owned by a specific user
+        'category',  # return which category the recommendation belongs to
     ]
     ordering_fields = [
         'comments_count',
