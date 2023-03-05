@@ -46,7 +46,7 @@ class RecommendationSerializer(serializers.ModelSerializer):
         return None
 
     class Meta:
-        model = Recommendation()
+        model = Recommendation
         fields = [
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_on', 'updated_on',
