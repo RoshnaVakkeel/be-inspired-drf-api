@@ -52,7 +52,7 @@ JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'be_inspired_dr_api.serializers.CurrentUserSerializer'
+    'USER_DETAILS_SERIALIZER': 'be_inspired_dr_api.serializers.CurrentUserSerializer'  # NOQA
 }
 
 # Quick-start development settings - unsuitable for production
@@ -110,7 +110,7 @@ MIDDLEWARE = [
 
 ALLOWED_HOSTS = [
     'be-inspired-drf-api.herokuapp.com',
-    'localhost', os.environ.get('ALLOWED_HOST'),]
+    'localhost', os.environ.get('ALLOWED_HOST'), ]
 
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
@@ -162,7 +162,6 @@ else:
     DATABASES = {
          'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
      }
-    
 
 """
 DATABASES = {
@@ -217,4 +216,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CSRF_TRUSTED_ORIGINS = ['localhost',]
 # Solution for 403 forbidden response on logging in to admin account
-CSRF_TRUSTED_ORIGINS = ['https://8000-roshnavakke-beinspiredd-wcpa9838shu.ws-eu87.gitpod.io', 'https://*.example.com',]  # NOQA
+CSRF_TRUSTED_ORIGINS = ['https://8000-roshnavakke-beinspiredd-wcpa9838shu.ws-eu87.gitpod.io', 'https://*.example.com', ]  # NOQA
