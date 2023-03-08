@@ -7,9 +7,11 @@ from .serializers import ProfileSerializer
 from be_inspired_dr_api.permissions import IsOwnerOrReadOnly
 
 
-class ProfileList(generics.ListCreateAPIView):
+class ProfileList(generics.ListAPIView):
     '''
-    Lists all the created profiles
+    Lists all the profiles
+    No create view required since profile creation is handled by
+    Django signals.
     '''
     queryset = Profile.objects.annotate(
         posts_count=Count('owner__post', distinct=True),
