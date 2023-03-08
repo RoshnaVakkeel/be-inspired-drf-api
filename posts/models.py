@@ -30,7 +30,7 @@ class Post(models.Model):
     description = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/',
-        default='../default_post_l2kfwu',
+        default='../default_post_ludaix',
         blank=True
     )
 

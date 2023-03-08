@@ -30,7 +30,7 @@ class Profile(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     # Default profile image
     image = models.ImageField(
-        upload_to='images/', default='../default_profile_rzzofg'
+        upload_to='images/', default='../default_profile_afxozd'
     )
 
     class Meta:
