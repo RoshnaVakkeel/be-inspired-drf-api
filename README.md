@@ -216,8 +216,121 @@ Django generics API views were used for Follower model:
 - [GitHub](https://github.com/) – to store the source code 
 - [Heroku](https://www.heroku.com/) - to host and deploy the live website
 - [Random Key Generator](https://randomkeygen.com/) - to generate secret key for Django 
+- [LICEcap](https://www.cockos.com/licecap/) - to capture an area of desktop and save it directly to .GIF (for viewing in web browsers). All the testing gifs have been generated using this tool.
 
 ### Testing Technologies
+### Manual Testing
+This user story as an admin was tested:
+"As an admin, I want to be able to create, edit and delete the users, posts, comments and likes, so that I can have full control the application using its CRUD features."
+
+**Results are enlisted in the table**
+
+**Test** | **Action** | **Expected Result** | **Test Result**
+-------- | ------------------- | ------------------- | -----------------
+User | Update and/or delete user | A user can be updated and/or deleted |**Pass**
+Profile | Update and/or delete profile | A users' profile can be updated and/or deleted | **Pass**
+Post | Create/ Update and/or delete post | A post can be created/ edited and/or deleted | **Pass**
+Recommendation | Create/ Update and/or delete recommendation | A recommendation can be Created/ Updated and/or deleted | **Pass**
+Comments | Create/ Update and/or delete comment | A comment can be Created/ Updated and/or deleted | **Pass**
+Likes | Create/ Change and/or delete Likes | A Like can be Created/ Changed and/or deleted | **Pass**
+Followers | Create/ Change and/or delete followers | Followers can be Created/ Changed and/or deleted | **Pass**
+
+The tests for CRUD features were run on Django Rest Framework(DRF-UI) and on Django-Admin panel. The details are as follows:
+
+**Django Rest Framework - User Interface**
+
+- To access the Django Rest Framework(DRF-UI), at terminal run command `python3 manage.py runserver`. It is accessible in a preview window.
+
+**Paths with which pages can be accessed**
+Using the URLconf defined in be_inspired_dr_api.urls, one can access the pages on preview window "https://8000-roshnavakke-beinspiredd-------.gitpod.io/**extensions**"
+Different pages can be accessed using following extensions:
+
+admin/
+api-auth/
+dj-rest-auth/logout/
+dj-rest-auth/
+dj-rest-auth/registration/
+profiles/
+profiles/<int:pk>/
+posts/
+posts/<int:pk>/
+recommendations/
+recommendations/<int:pk>/
+comments/
+comments/<int:pk>/
+likes/
+likes/<int:pk>
+likes_recommendations/
+likes_recommendations/<int:pk>
+followers/
+followers/<int:pk>/
+
+
+- To get to the preview link, follow the steps as shown in the gif below:
+
+	![DRF UI visible to logged out user](docs/manual_testing_drf_user_interface/root_route.gif)
+
+- All the features and links that can be accessed are shown below.
+
+	[DRF UI visible to logged out user](docs/manual_testing_drf_user_interface/root_route_logged_out.gif)
+
+
+- Manual tests for **Profile** CRUD features
+
+	In DRF-UI, the profiles page can be accessed using extension "/profiles" for list and details "profiles/<int:pk>/". The pages can be seen as shown below in gifs:
+
+	- [Profiles List View](docs/manual_testing_drf_user_interface/profiles_list.gif) 
+	- [Profile details upon profile selection using it's "id"](docs/manual_testing_drf_user_interface/profiles_id.gif) 
+	- [Profiles filters](docs/manual_testing_drf_user_interface/profiles_filters.gif) 
+
+- Manual tests for **Post** CRUD features
+	In DRF-UI, the profiles page can be accessed using extension "/posts" for list and details "posts/<int:pk>/". The pages can be seen as shown below in gifs:
+
+	- [Posts List View](docs/manual_testing_drf_user_interface/posts_list_post_create_update_test.gif) 
+	- [Post details upon post selection using it's "id"](docs/manual_testing_drf_user_interface/posts_list_post_details.gif) 
+	- [Posts filters](docs/manual_testing_drf_user_interface/posts_list_filters.gif) 
+
+- Manual tests for **Recommendation** CRUD features
+
+	In DRF-UI, the recommendations page can be accessed using extension "/recommendations" for list and details "recommendations/<int:pk>/". The pages can be seen as shown below in gifs:
+
+	- [Recommendations List View](docs/manual_testing_drf_user_interface/recommendations_list.gif) 
+	- [Recommendation details upon recommendation selection using it's "id"](docs/manual_testing_drf_user_interface/recommendations_detail.gif) 
+	- [Recommendations filters](docs/manual_testing_drf_user_interface/recommendations_filters.gif) 
+
+- Manual tests for **Comment** CRUD features
+
+	In DRF-UI, the comments page can be accessed using extension "/comments" for list and details "comments/<int:pk>/". The pages can be seen as shown below in gifs:
+
+	- [Comments List View](docs/manual_testing_drf_user_interface/comments_list_create_update.gif) 
+	- [Comment details upon comment selection using it's "id"](docs/manual_testing_drf_user_interface/comments_list_details.gif) 
+	- [Comments filters](docs/manual_testing_drf_user_interface/comments_filter.gif) 
+
+- Manual tests for **Like** CRUD features
+
+	In DRF-UI, the likes page can be accessed using extension "/likes" for list and details "likes/<int:pk>/". The pages can be seen as shown below in gifs:
+
+	- [Like list view and details upon comment selection using it's "id"](docs/manual_testing_drf_user_interface/likes_list_and_details.gif) 
+
+	In the DRF-UI and Admin panel, as the **Like** model shares foreign key relationship with both Recommendation and Post models. And as the the post or recommendation liked once cannot be liked twice by a user, there was an issue in liking a post or a recommendation separately. This issue can be seen in the gif below. It is also explained in Issues section.
+
+	- [Likes List Issue](docs/manual_testing_drf_user_interface/likes_list_issue.gif) 
+
+	As a solution (as per suggestion by my mentor Elaine B. Roche), I tried separating the like model for recommendation from post. Thus, I created another App to only like recommendation individually. The tests can be found below. The issue is also noted in Issues and Fix section below.
+
+	In DRF-UI, the likes page can be accessed using extension "/likes_recommendations" for list and details "likes_recommendations/<int:pk>/". The pages can be seen as shown below in gifs:
+
+	- [likes_recommendations list view](docs/manual_testing_drf_user_interface/likes_recommendations_list.gif) 
+
+	- [likes_recommendations details view](docs/manual_testing_drf_user_interface/likes_recommendations_details.gif) 
+
+- Manual tests for **Followers** CRUD features
+
+	In DRF-UI, the followers page can be accessed using extension "/followers" for list and details "followers/<int:pk>/". The pages can be seen as shown below in gifs:
+
+	- [Followers List View](docs/manual_testing_drf/followers_list.gif) 
+	- [Follower Detail View](docs/manual_testing_drf/follower_detail.png) 
+
 
 
 ## Django
