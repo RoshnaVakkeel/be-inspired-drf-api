@@ -242,7 +242,7 @@ The tests for CRUD features were run on Django Rest Framework(DRF-UI) and on Dja
 - To access the Django Rest Framework(DRF-UI), at terminal run command `python3 manage.py runserver`. It is accessible in a preview window.
 
 **Paths with which pages can be accessed**
-Using the URLconf defined in be_inspired_dr_api.urls, one can access the pages on preview window "https://8000-roshnavakke-beinspiredd-------.gitpod.io/**extensions**"
+Using the URLconf defined in be_inspired_dr_api.urls, one can access the pages on preview window "...gitpod.io/**extensions**"
 Different pages can be accessed using following extensions:
 
 admin/
