@@ -220,6 +220,9 @@ Django generics API views were used for Follower model:
 
 ### Testing Technologies
 
+Only Manual Testing was attempted due to really less time available to set up the whole project. Automated testing is still in my to do list.
+
+[Back to top ⇧](#contents)
 
 ## Django
 
@@ -406,6 +409,7 @@ In the frontend, I added badges to enable search of posts using badges. Upon usi
 
 -Fix: I added category in fiterset_fields = [categrory,] to solve this.
 
+[Back to top ⇧](#contents)
 
 ## Testing
 
@@ -541,6 +545,7 @@ followers/<int:pk>/
 
 	- [Follower Detail View](docs/manual_testing_drf_user_interface/follower_detail.png) 
 
+[Back to top ⇧](#contents)
 
 #### Django Admin Panel Maual Testing
 
@@ -584,11 +589,13 @@ All the CRUD features were tested here as well.
 
 	[Follower Add/Update/Delete](docs/manual_testing_admin_panel/followers.gif)
 
-### Validations
+### Validation
 
 #### Pep8 Validation
 The Python code has been validated using [Pep8 Validation Service](http://pep8online.com/) - no errors or warnings were found.
-There were no errors found. The full report can be found [here](/workspace/be-inspired-drf-api/docs/validations/CI_python_linter_backend.pdf)
+There were no errors found. The full report can be found [here](docs/validations/CI_python_linter_backend.pdf)
+
+[Back to top ⇧](#contents)
 
 ## Credits and Resources
 - Django REST Framework Documentation
@@ -606,4 +613,4 @@ There were no errors found. The full report can be found [here](/workspace/be-in
 - My fellow friends of Code Institute Kristyna Maulerova, Jyoti Yadav. A very special thanks to Tony Albania for helping me get past major hurdles while setting up the project. 
 - Code Institute's Tutor support - Ed and Gemma
 
-
+[Back to top ⇧](#contents)
