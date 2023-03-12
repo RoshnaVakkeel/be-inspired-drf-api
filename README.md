@@ -78,7 +78,7 @@ The Profile model serializer adds additional fields when a model instance that i
 
 ##### Profile Views
 Django generics API views were used for Profile model:
-- ListAPICreateView enables:
+- ListAPIView enables:
 	- Users to create their Profile
 	- Users to retrieve a list of Profiles
 - RetrieveUpdateAPIView enables:
@@ -104,7 +104,7 @@ The Post model serializer adds additional fields for when a model instance that 
 
 ##### Post Views
 Django generics API views were used for Post model:
-- ListAPICreateView enables:
+- ListCreateAPIView enables:
 	- Users to create Posts
 	- Users to retrieve a list of Posts
 - RetrieveUpdateDestroyAPIView enables:
@@ -130,7 +130,7 @@ The Recommendation model serializer adds additional fields for when a model inst
 
 ##### Recommendation Views
 Django generics API views were used for Recommendation model:
-- ListAPICreateView enables:
+- ListCreateAPIView enables:
 	- Users to create Recommendations
 	- Users to retrieve a list of Recommendations
 - RetrieveUpdateDestroyAPIView enables:
@@ -155,7 +155,7 @@ The Comment model serializer adds additional fields for when a model instance th
 
 ##### Comment Views
 Django generics API views were used for Comment model:
-- ListAPICreateView enables:
+- ListCreateAPIView enables:
 	- Users to create Comments
 	- Users to retrieve a list of Comments
 - RetrieveUpdateDestroyAPIView enables:
@@ -176,7 +176,7 @@ The Like model serializer adds additional fields for when a model instance that 
 
 ##### Like Views
 Django generics API views were used for Like model:
-- ListAPIView enables:
+- ListCreateAPIView enables:
 	- Users to retrieve a list of Likes and create a Like
 - RetrieveUpdateAPIView enables the users:
 	- to get a single Like instance
@@ -196,7 +196,7 @@ The Follower model serializer adds additional fields for when a model instance t
 
 ##### Follower Views
 Django generics API views were used for Follower model:
-- ListAPIView enables:
+- ListCreateAPIView enables:
 	- Users to retrieve a list of Followers and create a Follower
 - RetrieveUpdateAPIView enables the users:
 	- to get a single Follower instance
@@ -363,6 +363,7 @@ JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 ## Deployment
 
 ### Heroku
+For steps I referred to the [write up credit to- Adam Hatton's Quizle Readme](https://github.com/adamhatton/quizle-drf-api/)
 
 ## Issues and Fix
 
@@ -618,7 +619,7 @@ There were no errors found. The full report can be found [here](docs/validations
 ## Acknowledgements
 
 - A very heartfelt thanks to my mentor Elaine B. Roche for her feedback on the project and suggestions for improvement. 
-- My fellow friends of Code Institute Kristyna Maulerova, Jyoti Yadav. A very special thanks to Tony Albania for helping me get past major hurdles while setting up the project. 
+- My fellow friends of Code Institute Kristyna Maulerova, Jyoti Yadav. A very special thanks to Tony Albanese for helping me get past major hurdles while setting up the project. 
 - Code Institute's Tutor support - Ed and Gemma
 
 [Back to top ⇧](#contents)
